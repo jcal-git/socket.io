@@ -1,0 +1,21 @@
+version: '3'
+services:
+  svc-kafka-consumer:
+    build: './svc-kafka-consumer'
+    image: svc-kafka-consumer
+    ports:
+      - "4003:4003"
+    environment:
+      KAFKA_HOST: 128.199.74.127:9094
+      KAFKA_CONSUMER_ID: ResponseConsumerId
+      KAFKA_GROUP_ID: ResponseConsumerGroup
+      KAFKA_CONSUMER_SESSION_TIMEOUT: 180000
+      KAFKA_TOPIC: ResponseTopic
+      PLUK_SOCKETIO_SENDDATA_URL: http://128.199.74.127:4001/api/sendData
+      PLUK_SOCKETIO_CHANNEL_REPLY: reply
+  socket-io:
+    build: './socket.io'
+    image: socket-io
+    ports:
+    - "4001:4001"
+    

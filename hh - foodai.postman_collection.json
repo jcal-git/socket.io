@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "1d52eb22-a899-492d-a494-243846a66c6a",
+		"name": "hh - foodai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "socket.io post message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"eGozBMlL-iY3IzqEAAAC\",\r\n    \"message\" : {\r\n        \"data1\" : \"reply\",\r\n        \"data2\" : \"client 1\"\r\n\r\n    },\r\n    \"channel\" : \"reply\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4001/api/sendData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"api",
+						"sendData"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

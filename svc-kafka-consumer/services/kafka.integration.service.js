@@ -40,18 +40,30 @@ exports.consumeByGroup = async () => {
                 consoleLog("---------Consuming in " + topic + " ----------"); 
 
                 console.log("message", message.value.toString());
-                let body = JSON.parse(message.value.toString());
-                await axios.post(process.env.PLUK_SOCKETIO_SENDDATA_URL || 'http://128.199.74.127:4001/api/sendData', {
-                    id: body.socketId,
-                    message: body,
-                    channel: process.env.PLUK_SOCKETIO_CHANNEL_REPLY || "reply"
-                })
-                .then((response) => {
-                    console.log("response:", response);
-                })
-                .catch((error) => {
+                try {
+                    let body = JSON.stringify(JSON.parse(message.value.toString()));
+                    console.log("body", body);
+                    var config = {
+                        method: 'post',
+                        url: process.env.PLUK_SOCKETIO_SENDDATA_URL || 'http://128.199.74.127:4001/api/sendData',
+                        headers: { 
+                            'Content-Type': 'application/json'
+                        },
+                        data : body
+                    };
+                      
+                    axios(config)
+                    .then(function (response) {
+                        console.log(JSON.stringify(response.data));
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                }
+                catch (ex){
                     console.log(error.response);
-                });
+                }
+               
             }
         });
     }

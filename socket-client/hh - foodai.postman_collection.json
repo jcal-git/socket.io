@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "1d52eb22-a899-492d-a494-243846a66c6a",
+		"name": "hh - foodai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "socket.io post message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"eGozBMlL-iY3IzqEAAAC\",\r\n    \"message\" : {\r\n        \"data1\" : \"reply\",\r\n        \"data2\" : \"client 1\"\r\n\r\n    },\r\n    \"channel\" : \"reply\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4001/api/sendData",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"api",
+						"sendData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "socket.io post message (public)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"2kstp4nb2OqVGfksAAAb\",\r\n    \"message\" : {\r\n        \"data1\" : \"reply\",\r\n        \"data2\" : \"client 1\"\r\n\r\n    },\r\n    \"channel\" : \"reply\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://128.199.74.127:4001/api/sendData",
+					"protocol": "http",
+					"host": [
+						"128",
+						"199",
+						"74",
+						"127"
+					],
+					"port": "4001",
+					"path": [
+						"api",
+						"sendData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kafka - Push Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"message\" : {\r\n\t\t\"id\": \"rtuCAZD0klCEjxNYAAA8\",\r\n\t\t\"channel\": \"notif\",\r\n\t\t\"message\" : { \"field1\" : \"data1\", \"field2\": \"data2\", \"field3\" : \"data3\", \"field4\": \"data4\"}\r\n\t},\r\n\t\"topic\": \"ResponseTopic\",\r\n\t\"broker\": \"128.199.74.127:9094\",\r\n\t\"clientId\": \"clientId1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://128.199.74.127:9000/produce",
+					"protocol": "http",
+					"host": [
+						"128",
+						"199",
+						"74",
+						"127"
+					],
+					"port": "9000",
+					"path": [
+						"produce"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

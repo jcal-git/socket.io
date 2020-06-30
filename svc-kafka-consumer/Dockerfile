@@ -1,10 +1,10 @@
-FROM node:carbon
+FROM node:alpine
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN apt-get update || : && apt-get install python -y
+RUN apk add g++ make python
 
 RUN npm install
 
